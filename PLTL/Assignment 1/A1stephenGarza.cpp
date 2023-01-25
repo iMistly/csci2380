@@ -18,6 +18,7 @@ int main(){
     cout << "Insert a number to square and continuously decrement: ";
     cin >> num;
     decreasingSquares(num);
+    system("pause");
     return 0;
 }
 
@@ -33,4 +34,5 @@ void decreasingSquares(int num){
         string str = i==1?"":", ";
         cout << square(i) << str;
     }
+    cout << endl;
 }
