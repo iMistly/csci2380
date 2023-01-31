@@ -26,6 +26,7 @@ int main(){
         else
             cout << ans[i];
     }
+    system("pause");
 }
 
 char convert(int num){
