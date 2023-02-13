@@ -2,63 +2,46 @@
 #include <iostream> 
 using namespace std; 
 
+// Student Class
 class Student{ 
     public: 
         string name; 
-        int id; 
-        int* grades; 
+        int id;
+        int grades[3];
 }; 
 
-//Part 1 
-// Function prototype for inputting 
-void inputStudent(Student* stuPtr, int count); 
-
-// TODO: Function prototype for printing 
-void printStudent(Student* stuPtr, int count);
+// Prototype functions
+void inputStudent(Student *stuPtr); 
+void printStudent(Student *stuPtr);
  
+int main(){
+    Student stu;
 
-// Main function 
+    Student * studentPtr = &stu;
 
-int main(){ 
-// Part 1 
-// instantitating a Student object 
-    Student stu; 
+    inputStudent(studentPtr);
 
-// defining a pointer for the Student object 
-    Student* studentPtr = &stu; 
+    printStudent(studentPtr);
 
-// inputtung from the keyboard into the instance 
-cout << "How many grades are there?: ";
-cin >> studentPtr->grades[0];
-
-inputStudent(&stu, stu.amnt); 
-
-// TODO: print the object
-printStudent(studentPtr, stu.amnt);
-
-return 0; 
+    return 0; 
 } 
 
-
-//TODO: Function defintions// 
-
-// Part 1 
-
-void inputStudent(Student *stuPtr, int count){
+// Function Definitions //
+void inputStudent(Student *stuPtr){
     cout << "Enter a name: ";
     cin >> stuPtr->name;
     cout << "Enter an ID: ";
     cin >> stuPtr->id;
-    for(int i = 0; i<count; i++){
+    for(int i = 0; i<3; i++){
         cout << "Enter a grade: ";
         cin >> stuPtr->grades[i];
     }
 } 
 
-void printStudent(Student* stuPtr, int count){
+void printStudent(Student *stuPtr){
     cout << "Name: " << stuPtr->name << '\n';
     cout << "ID: " << stuPtr->id << '\n';
-    for(int i = 0; i<count; i++){
+    for(int i = 0; i<3; i++){
         cout << "Grade " << i+1 << ": " << stuPtr->grades[i] << '\n';
     }
 }
