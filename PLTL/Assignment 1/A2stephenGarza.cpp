@@ -7,7 +7,11 @@ class Student{
     public: 
         string name; 
         int id;
-        int grades[3];
+        int * grades;
+
+        Student(int x){
+            grades = new int[x];
+        }
 }; 
 
 // Prototype functions
@@ -15,7 +19,12 @@ void inputStudent(Student *stuPtr);
 void printStudent(Student *stuPtr);
  
 int main(){
-    Student stu;
+    int numStu;
+
+    cout << "How many students are there?: ";
+    cin >> numStu; 
+
+    Student stu(numStu);
 
     Student * studentPtr = &stu;
 
