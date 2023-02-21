@@ -7,50 +7,65 @@ class Student{
     public: 
         string name; 
         int id;
+        int numGrades;
         int * grades;
 
-        Student(int x){
-            grades = new int[x];
+        Student(int x = 3){
+            numGrades = x;
+            grades = new int[numGrades];
         }
 }; 
 
 // Prototype functions
-void inputStudent(Student *stuPtr); 
-void printStudent(Student *stuPtr);
+void inputStudent(Student *inStu); 
+void printStudent(Student *inStu);
  
 int main(){
-    int numStu;
+    int numStu, numGrades;
 
     cout << "How many students are there?: ";
     cin >> numStu; 
 
-    Student stu(numStu);
+    Student * roster = new Student[numStu];
 
-    Student * studentPtr = &stu;
+    cout << "How many grades are there?: ";
+    cin >> numGrades;
 
-    inputStudent(studentPtr);
+    for(int i = 0; i<numStu; i++){
+        roster[i] = Student(numGrades);
+        cout << "\nFor Student " << i+1 << ":\n";
+        inputStudent(&roster[i]);
+    }
+    
+    cout << '\n';
 
-    printStudent(studentPtr);
+    for(int i = 0; i<numStu; i++){
+        printStudent(&roster[i]);
+        cout << '\n';
+        delete [] roster[i].grades;
+    }
+
+    delete [] roster;
 
     return 0; 
 } 
 
 // Function Definitions //
-void inputStudent(Student *stuPtr){
+void inputStudent(Student *inStu){
     cout << "Enter a name: ";
-    cin >> stuPtr->name;
+    cin >> inStu->name;
     cout << "Enter an ID: ";
-    cin >> stuPtr->id;
-    for(int i = 0; i<3; i++){
+    cin >> inStu->id;
+    for(int i = 0; i<inStu->numGrades; i++){
         cout << "Enter a grade: ";
-        cin >> stuPtr->grades[i];
+        cin >> inStu->grades[i];
     }
 } 
 
-void printStudent(Student *stuPtr){
-    cout << "Name: " << stuPtr->name << '\n';
-    cout << "ID: " << stuPtr->id << '\n';
-    for(int i = 0; i<3; i++){
-        cout << "Grade " << i+1 << ": " << stuPtr->grades[i] << '\n';
+void printStudent(Student *inStu){
+    cout << "Name: " << inStu->name << '\n';
+    cout << "ID: " << inStu->id << '\n';
+    for(int i = 0; i<inStu->numGrades; i++){
+        cout << "Grade " << i+1 << ": " << inStu->grades[i] << '\n';
     }
 }
