@@ -10,8 +10,8 @@ class Student{
         int numGrades;
         int * grades;
 
-        Student(int x = 3){
-            numGrades = x;
+        Student(int amntGrades = 3){
+            numGrades = amntGrades;
             grades = new int[numGrades];
         }
 }; 
@@ -63,9 +63,12 @@ void inputStudent(Student *inStu){
 } 
 
 void printStudent(Student *inStu){
+    int sumGrade = 0;
     cout << "Name: " << inStu->name << '\n';
     cout << "ID: " << inStu->id << '\n';
     for(int i = 0; i<inStu->numGrades; i++){
+        sumGrade += inStu->grades[i];
         cout << "Grade " << i+1 << ": " << inStu->grades[i] << '\n';
     }
+    cout << "Average grade: " << 1.0 * sumGrade / inStu->numGrades << '\n';
 }
