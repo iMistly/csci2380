@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-#include "DDList.h"
+#include "DLList.h"
 
 int main(){
     DLList list;

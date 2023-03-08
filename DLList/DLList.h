@@ -4,7 +4,7 @@ class DNode{
         DNode* next;
         DNode* prev;
 
-        DNode(float inData){
+        DNode(float inData=0){
             data = inData;
             next = nullptr;
             prev = nullptr;
