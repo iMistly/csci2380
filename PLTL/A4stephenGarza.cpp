@@ -8,8 +8,11 @@ struct track{
     string album{};
     int length{}; //In seconds
 
-    track(string title, vector<string> artists, string album, int length){
-
+    track(string inTitle, vector<string> inArtists, string inAlbum, int inLength){
+        title = inTitle;
+        artists = inArtists;
+        album = inAlbum;
+        length = inLength;
     }
 };
 
@@ -25,7 +28,7 @@ struct playlist{
 
     //Print the tracks from the newest to oldest
     void printTracks(){
-        for(int i = 0; i<tracks.size(); i++){
+        for(int i = tracks.size()-1; i>=0; i--){
             cout << tracks[i].title << '\n';
         }
     }
@@ -38,7 +41,7 @@ struct playlist{
 
     //Remove a track
     void removeTrack(){
-        tracks.pop_back();
+        tracks.erase(tracks.size()-1);
     }
 };
 
@@ -46,7 +49,9 @@ int main(){
     playlist minecraft("minecraft");
     
     minecraft.addTrack("Mice on Venus", {"C418"}, "Minecraft - Volume Alpha", 281);
-    
+    minecraft.addTrack("Aria Math", {"C418"}, "Minecraft - Volume Beta", 5*60 + 10);
+
+    minecraft.printTracks();
 
     return 0;
 }
