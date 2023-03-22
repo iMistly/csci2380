@@ -273,23 +273,23 @@ class mp3{
 };
 
 int main(){
-    // playlist minecraft("Minecraft");
+    playlist minecraft("Minecraft");
     
-    // minecraft.addTrack("Mice on Venus", {"C418"}, "Minecraft - Volume Alpha", 4, 41);
-    // minecraft.addTrack("Aria Math", {"C418"}, "Minecraft - Volume Beta", 5, 10);
-    // minecraft.addTrack("Firebugs", {"Lena Raine"}, "Minecraft: The Wild Update", 5, 12);
-    // minecraft.addTrack("Otherside", {"Lena Raine"}, "Minecraft: Caves & Cliffs", 3, 15);
-    // minecraft.addTrack("Wet Hands", {"C418"}, "Minecraft - Volume Alpha", 1, 30, 1);
-    // minecraft.addTrack("5", {"Samuel Åberg"}, "Minecraft: The Wild Update", 2, 58);
+    minecraft.addTrack("Mice on Venus", {"C418"}, "Minecraft - Volume Alpha", 4, 41);
+    minecraft.addTrack("Aria Math", {"C418"}, "Minecraft - Volume Beta", 5, 10);
+    minecraft.addTrack("Firebugs", {"Lena Raine"}, "Minecraft: The Wild Update", 5, 12);
+    minecraft.addTrack("Otherside", {"Lena Raine"}, "Minecraft: Caves & Cliffs", 3, 15);
+    minecraft.addTrack("Wet Hands", {"C418"}, "Minecraft - Volume Alpha", 1, 30, 1);
+    minecraft.addTrack("5", {"Samuel Åberg"}, "Minecraft: The Wild Update", 2, 58);
 
-    // minecraft.printTracks();
+    minecraft.printTracks();
 
-    // minecraft.removeTrackByName("Aria Math");
-    // minecraft.removeTrackByName("cat");
+    minecraft.removeTrackByName("Aria Math");
+    minecraft.removeTrackByName("cat");
 
-    mp3 newPlayer("MyMP3");
+    // mp3 newPlayer("MyMP3");
     
-    newPlayer.start();
+    // newPlayer.start();
 
     return 0;
 }
