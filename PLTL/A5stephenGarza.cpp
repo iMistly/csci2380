@@ -34,15 +34,18 @@ class playlist{
             "\tTitle:\t  " << tracks[index].title << '\n' <<
             "\tArtists:  " << tracks[index].artists[0];
             for(int j = 1; j<tracks[index].artists.size(); j++){
-                cout << ", " << tracks[index].artists[j];}
+                cout << ", " << tracks[index].artists[j];
+            }
             cout << '\n' <<
             "\tAlbum:\t  " << tracks[index].album << '\n';
             if(tracks[index].genres.size()>0){
                 cout << "\tGenres:   " << tracks[index].genres[0];
                 for(int j = 1; j<tracks[index].genres.size(); j++){
-                    cout << ", " << tracks[index].genres[j];}
+                    cout << ", " << tracks[index].genres[j];
+                }
+                cout << '\n';
             }
-            cout << '\n' <<
+            cout <<
             "\tLength:\t  " << tracks[index].length/60 << ":" << setfill('0') << setw(2) << tracks[index].length%60 << '\n';
             if(tracks[index].favorited)
                 cout << "✨ This song is favorited!✨\n";
@@ -122,8 +125,72 @@ class playlist{
             cout << '\n';
         }
 
-        void searchTracks(){
-
+        // Types: 
+        // 0: Title
+        // 1: Artist
+        // 2: Album
+        // 3: Genre
+        // 4: Favorited
+        void searchTracks(int type, string target = ""){
+            int counter = 1;
+            switch (type)
+            {
+            case 0:
+                cout << "🔍 Searching for tracks titled \"" << target << "\":\n";
+                for(int i = 0; i<tracks.size(); i++){
+                    if(tracks[i].title == target){
+                        printOne(i, counter++);
+                        return;
+                    }
+                }
+                cout << "❌ Could not find song titled \"" << target << "\"\n";
+                break;
+            case 1:
+                cout << "🔍 Searching for tracks by \"" << target << "\":\n";
+                for(int i = 0; i<tracks.size(); i++){
+                    for(int j = 0; j<tracks[i].artists.size(); j++){
+                        if(tracks[i].artists[j] == target){
+                            printOne(i, counter++);
+                            break;
+                        }
+                    }
+                }
+                cout << "🔍 End search.\n";
+                break;
+            case 2:
+                cout << "🔍 Searching for tracks on the album \"" << target << "\":\n";
+                for(int i = 0; i<tracks.size(); i++){
+                    if(tracks[i].album == target){
+                        printOne(i, counter++);
+                    }
+                }
+                cout << "🔍 End search.\n";
+                break;
+            case 3:
+                cout << "🔍 Searching for tracks under the \"" << target << "\" genre:\n";
+                for(int i = 0; i<tracks.size(); i++){
+                    for(int j = 0; j<tracks[i].genres.size(); j++){
+                        if(tracks[i].genres[j] == target){
+                            printOne(i, counter++);
+                            break;
+                        }
+                    }
+                }
+                cout << "🔍 End search.\n";
+                break;
+            case 4:
+                cout << "🔍 Searching for favorited tracks:\n";
+                for(int i = 0; i<tracks.size(); i++){
+                    if(tracks[i].favorited){
+                        printOne(i, counter++);
+                    }
+                }
+                cout << "End search.\n";
+                break;
+            default:
+                cout << "❌ Invalid search type.❌\n";
+                break;
+            }
         }
 };
 
@@ -145,7 +212,7 @@ int main(){
     minecraft.addTrackIndex(track ("Cat", {"C418"}, "Minecraft - Volume Alpha", 3, 6, {"Ambient", "Instrumental"}, true), 2);
     minecraft.printTracks();
 
-    minecraft.printTracksByGenre("Ambient");
+    minecraft.searchTracks(3, "Ambient");
 
     return 0;
 }
