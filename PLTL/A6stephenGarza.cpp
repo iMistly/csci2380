@@ -24,18 +24,16 @@ void createTree(Node* root, string arr[], int size){
                     current->left = new Node(arr[i]);
                     break;
                 }
-                else{
+                else 
                     current = current->left;
-                }
             }
             else{
                 if(current->right == nullptr){
                     current->right = new Node(arr[i]);
                     break;
                 }
-                else{
+                else
                     current = current->right;
-                }
             }
         }
     }
@@ -52,20 +50,18 @@ bool searchTree(Node* root){
             cout << "Found " << input << " in the tree.\n";
             return true;
         }
-        else if(input < current->data){
+        else if(input < current->data)
             current = current->left;
-        }
-        else{
-            current = current->right;
-            
-        }
+        else
+            current = current->right;   
     }
     cout << "Could not find " << input << " in the tree.\n";
     return false;
 }
 
 int main(){
-    string arr[] = {"And", "the", "man", "in", "the", "back", "said,", "Everyone", "attack",
+    int len = 68;
+    string arr[len] = {"And", "the", "man", "in", "the", "back", "said,", "Everyone", "attack",
     "And", "it", "turned", "into", "a", "ballroom", "blitz",
     "And", "the", "girl", "in", "the", "corner", "said,", "Boy", "I", "want", "to", "warn", "you",
     "It'll", "turn", "into", "a", "ballroom", "blitz",
@@ -75,8 +71,7 @@ int main(){
     "Oh", "I", "softly", "call", "you", "over",
     "Then", "you", "appear", "there's", "nothing", "left", "of", "you"};
     Node* root = new Node(arr[0]);
-    Node* current = root;
-    createTree(root, arr, 60);
+    createTree(root, arr, len);
     searchTree(root);
     return 0;
 }
